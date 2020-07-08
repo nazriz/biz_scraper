@@ -10,4 +10,12 @@ board = soup.find('div',class_='board')
 
 thread = board.find('div',class_='thread')
 
-print(thread.prettify())
+subject = thread.find('span',class_='subject').text
+
+message = thread.find('blockquote',class_="postMessage").text
+
+print(subject)
+print()
+print(message)
+
+# print(thread.prettify())
