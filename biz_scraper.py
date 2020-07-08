@@ -8,14 +8,20 @@ soup = BeautifulSoup(source,'lxml')
 
 board = soup.find('div',class_='board')
 
-thread = board.find('div',class_='thread')
 
-subject = thread.find('span',class_='subject').text
+for thread in board.find_all('div',class_='thread'):
 
-message = thread.find('blockquote',class_="postMessage").text
+    subject = thread.find('span',class_='subject').text
 
-print(subject)
-print()
-print(message)
+    message = thread.find('blockquote',class_="postMessage").text
 
-# print(thread.prettify())
+    post_info = thread.find('div',class_='postInfo desktop')
+
+    link_list = [a['href'] for a in post_info.find_all('a', href=True)][2]
+
+    print(link_list)
+
+
+    # print(subject)
+    # print()
+    # print(message)
