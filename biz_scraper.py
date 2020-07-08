@@ -6,4 +6,8 @@ source = requests.get('https://boards.4channel.org/biz/').text
 
 soup = BeautifulSoup(source,'lxml')
 
-print(soup.prettify())
+board = soup.find('div',class_='board')
+
+thread = board.find('div',class_='thread')
+
+print(thread.prettify())
